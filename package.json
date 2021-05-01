@@ -1,0 +1,84 @@
+{
+  "name": "hyenc",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@electron/remote": "^1.0.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "github:fortawesome/react-fontawesome",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "*",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "bootstrap": "^5.0.0-beta1",
+    "cross-env": "^7.0.3",
+    "electron": "^11.2.1",
+    "electron-builder": "^22.9.1",
+    "electron-is-dev": "^1.2.0",
+    "fs": "*",
+    "move-file": "^2.0.0",
+    "prettier": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-file-picker": "^0.0.6",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "use-file-picker": "^0.2.1",
+    "web-vitals": "^0.2.4",
+    "webfontloader": "^1.6.28"
+  },
+  "main": "public/main.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron:serve": "concurrently -k \"cross-env BROWSER=none yarn start\" \"yarn electron:start\"",
+    "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/main.js",
+    "electron:start": "wait-on tcp:3000 && electron ."
+  },
+  "build": {
+    "extends": null,
+    "appId": "com.example.electron-cra",
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "^11.2.1",
+    "electron-builder": "^22.9.1",
+    "prettier": "^2.2.1",
+    "wait-on": "^5.1.0"
+  }
+}
